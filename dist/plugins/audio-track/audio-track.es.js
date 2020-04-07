@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -35,7 +36,9 @@ function _assertThisInitialized(self) {
 
 var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-var AudioTrackSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
+var AudioTrackSettingItem =
+/*#__PURE__*/
+function (_SettingOptionItem) {
   _inheritsLoose(AudioTrackSettingItem, _SettingOptionItem);
 
   function AudioTrackSettingItem(player, options) {
@@ -135,7 +138,9 @@ var AudioTrackSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
 videojs.registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
 
-var audio = /*#__PURE__*/function (_videojs$getPlugin) {
+var audio =
+/*#__PURE__*/
+function (_videojs$getPlugin) {
   _inheritsLoose(audio, _videojs$getPlugin);
 
   function audio(player, options) {

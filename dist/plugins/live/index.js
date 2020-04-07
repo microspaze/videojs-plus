@@ -1,11 +1,12 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
@@ -15,7 +16,9 @@
 
   var Component = videojs.getComponent('Component');
 
-  var LiveNotice = /*#__PURE__*/function (_Component) {
+  var LiveNotice =
+  /*#__PURE__*/
+  function (_Component) {
     _inheritsLoose(LiveNotice, _Component);
 
     function LiveNotice() {
@@ -39,7 +42,9 @@
 
   var Plugin = videojs.getPlugin('plugin');
 
-  var Live = /*#__PURE__*/function (_Plugin) {
+  var Live =
+  /*#__PURE__*/
+  function (_Plugin) {
     _inheritsLoose(Live, _Plugin);
 
     function Live(player, options) {

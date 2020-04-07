@@ -1,11 +1,12 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
@@ -13,7 +14,9 @@
     subClass.__proto__ = superClass;
   }
 
-  var FullWindowToggle = /*#__PURE__*/function (_videojs$getComponent) {
+  var FullWindowToggle =
+  /*#__PURE__*/
+  function (_videojs$getComponent) {
     _inheritsLoose(FullWindowToggle, _videojs$getComponent);
 
     function FullWindowToggle(player, options) {

@@ -1,11 +1,12 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -33,7 +34,9 @@
 
   var ClickableComponent = videojs.getComponent('ClickableComponent');
 
-  var ExitPipButton = /*#__PURE__*/function (_ClickableComponent) {
+  var ExitPipButton =
+  /*#__PURE__*/
+  function (_ClickableComponent) {
     _inheritsLoose(ExitPipButton, _ClickableComponent);
 
     function ExitPipButton(player, options) {
@@ -63,7 +66,9 @@
 
   var Component = videojs.getComponent('Component');
 
-  var PipPlayerWrapper = /*#__PURE__*/function (_Component) {
+  var PipPlayerWrapper =
+  /*#__PURE__*/
+  function (_Component) {
     _inheritsLoose(PipPlayerWrapper, _Component);
 
     function PipPlayerWrapper(player, options) {
@@ -102,7 +107,9 @@
 
   var Button = videojs.getComponent('Button');
 
-  var PipButton = /*#__PURE__*/function (_Button) {
+  var PipButton =
+  /*#__PURE__*/
+  function (_Button) {
     _inheritsLoose(PipButton, _Button);
 
     function PipButton(player, options) {
@@ -143,7 +150,9 @@
     parent.addChild(new PipButton(vjsPlayer), {}, index);
   });
 
-  var pictureInPicture = /*#__PURE__*/function (_videojs$getPlugin) {
+  var pictureInPicture =
+  /*#__PURE__*/
+  function (_videojs$getPlugin) {
     _inheritsLoose(pictureInPicture, _videojs$getPlugin);
 
     function pictureInPicture(player, options) {

@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -25,7 +26,9 @@ function _inheritsLoose(subClass, superClass) {
   subClass.__proto__ = superClass;
 }
 
-var List = /*#__PURE__*/function () {
+var List =
+/*#__PURE__*/
+function () {
   function List(array, startIndex) {
     this.values = array.slice(0);
     this.index_ = startIndex || 0;
@@ -82,7 +85,9 @@ var List = /*#__PURE__*/function () {
 
 var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-var QualitySettingItem = /*#__PURE__*/function (_SettingOptionItem) {
+var QualitySettingItem =
+/*#__PURE__*/
+function (_SettingOptionItem) {
   _inheritsLoose(QualitySettingItem, _SettingOptionItem);
 
   function QualitySettingItem(player, options) {
@@ -130,7 +135,9 @@ var QualitySettingItem = /*#__PURE__*/function (_SettingOptionItem) {
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualitySettingItem');
 videojs.registerComponent('QualitySettingItem', QualitySettingItem);
 
-var Quality = /*#__PURE__*/function (_List) {
+var Quality =
+/*#__PURE__*/
+function (_List) {
   _inheritsLoose(Quality, _List);
 
   function Quality(player, array, defaultQualityLevel) {

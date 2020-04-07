@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 import videojs from 'video.js';
 
 function findChild(parent, name, result) {
@@ -89,7 +90,9 @@ function _assertThisInitialized(self) {
 var Component = videojs.getComponent('Component');
 var ControlBar = videojs.getComponent('ControlBar');
 
-var ControlSeparator = /*#__PURE__*/function (_Component) {
+var ControlSeparator =
+/*#__PURE__*/
+function (_Component) {
   _inheritsLoose(ControlSeparator, _Component);
 
   function ControlSeparator(player, options) {
@@ -195,7 +198,9 @@ videojs.hook('setup', function (vjsPlayer) {
   });
 });
 
-var Title = /*#__PURE__*/function (_videojs$getComponent) {
+var Title =
+/*#__PURE__*/
+function (_videojs$getComponent) {
   _inheritsLoose(Title, _videojs$getComponent);
 
   function Title(player, options) {
@@ -255,7 +260,9 @@ videojs.getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTi
 var PlayToggleButton = videojs.getComponent('PlayToggle');
 var ClickableComponent = videojs.getComponent('ClickableComponent');
 
-var PlayToggleLayer = /*#__PURE__*/function (_ClickableComponent) {
+var PlayToggleLayer =
+/*#__PURE__*/
+function (_ClickableComponent) {
   _inheritsLoose(PlayToggleLayer, _ClickableComponent);
 
   function PlayToggleLayer() {
@@ -286,7 +293,9 @@ playerChildren.splice(loadSpinnerIndex, 0, 'PlayToggleLayer');
 
 var MenuItem = videojs.getComponent('MenuItem');
 
-var ContextMenuItem = /*#__PURE__*/function (_MenuItem) {
+var ContextMenuItem =
+/*#__PURE__*/
+function (_MenuItem) {
   _inheritsLoose(ContextMenuItem, _MenuItem);
 
   function ContextMenuItem(player, options) {
@@ -328,7 +337,9 @@ var ContextMenuItem = /*#__PURE__*/function (_MenuItem) {
 
 videojs.registerComponent('ContextMenuItem', ContextMenuItem);
 
-var ContextMenuToggleLoop = /*#__PURE__*/function (_ContextMenuItem) {
+var ContextMenuToggleLoop =
+/*#__PURE__*/
+function (_ContextMenuItem) {
   _inheritsLoose(ContextMenuToggleLoop, _ContextMenuItem);
 
   function ContextMenuToggleLoop(player) {
@@ -364,7 +375,9 @@ var ContextMenuToggleLoop = /*#__PURE__*/function (_ContextMenuItem) {
 
 videojs.registerComponent('ContextMenuToggleLoop', ContextMenuToggleLoop);
 
-var AboutThisPlayer = /*#__PURE__*/function (_ContextMenuItem) {
+var AboutThisPlayer =
+/*#__PURE__*/
+function (_ContextMenuItem) {
   _inheritsLoose(AboutThisPlayer, _ContextMenuItem);
 
   function AboutThisPlayer(player) {
@@ -390,7 +403,9 @@ videojs.registerComponent('AboutThisPlayer', AboutThisPlayer);
 
 var ClickableComponent$1 = videojs.getComponent('ClickableComponent'); // for mobile view
 
-var CloseContextMenu = /*#__PURE__*/function (_ClickableComponent) {
+var CloseContextMenu =
+/*#__PURE__*/
+function (_ClickableComponent) {
   _inheritsLoose(CloseContextMenu, _ClickableComponent);
 
   function CloseContextMenu() {
@@ -414,7 +429,9 @@ videojs.registerComponent('CloseContextMenu', CloseContextMenu);
 
 var Menu = videojs.getComponent('Menu');
 
-var ContextMenu = /*#__PURE__*/function (_Menu) {
+var ContextMenu =
+/*#__PURE__*/
+function (_Menu) {
   _inheritsLoose(ContextMenu, _Menu);
 
   function ContextMenu(player, options) {
@@ -490,7 +507,9 @@ videojs.getComponent('Player').prototype.options_.children.push('ContextMenu');
 
 var ClickableComponent$2 = videojs.getComponent('ClickableComponent');
 
-var CloseSettingMenu = /*#__PURE__*/function (_ClickableComponent) {
+var CloseSettingMenu =
+/*#__PURE__*/
+function (_ClickableComponent) {
   _inheritsLoose(CloseSettingMenu, _ClickableComponent);
 
   function CloseSettingMenu() {
@@ -514,7 +533,9 @@ videojs.registerComponent('CloseSettingMenu', CloseSettingMenu);
 
 var Menu$1 = videojs.getComponent('Menu');
 
-var SettingMenu = /*#__PURE__*/function (_Menu) {
+var SettingMenu =
+/*#__PURE__*/
+function (_Menu) {
   _inheritsLoose(SettingMenu, _Menu);
 
   function SettingMenu(player, options) {
@@ -614,7 +635,9 @@ videojs.registerComponent('SettingMenu', SettingMenu);
 
 var MenuItem$1 = videojs.getComponent('MenuItem');
 
-var SettingMenuItem = /*#__PURE__*/function (_MenuItem) {
+var SettingMenuItem =
+/*#__PURE__*/
+function (_MenuItem) {
   _inheritsLoose(SettingMenuItem, _MenuItem);
 
   function SettingMenuItem(player, options) {
@@ -632,7 +655,9 @@ var SettingMenuItem = /*#__PURE__*/function (_MenuItem) {
 
 videojs.registerComponent('SettingMenuItem', SettingMenuItem);
 
-var SettingOnOffItem = /*#__PURE__*/function (_SettingMenuItem) {
+var SettingOnOffItem =
+/*#__PURE__*/
+function (_SettingMenuItem) {
   _inheritsLoose(SettingOnOffItem, _SettingMenuItem);
 
   function SettingOnOffItem() {
@@ -671,7 +696,9 @@ var SettingOnOffItem = /*#__PURE__*/function (_SettingMenuItem) {
 
 videojs.registerComponent('SettingOnOffItem', SettingOnOffItem);
 
-var SettingSubOptionTitle = /*#__PURE__*/function (_SettingMenuItem) {
+var SettingSubOptionTitle =
+/*#__PURE__*/
+function (_SettingMenuItem) {
   _inheritsLoose(SettingSubOptionTitle, _SettingMenuItem);
 
   function SettingSubOptionTitle(player, options) {
@@ -699,7 +726,9 @@ var SettingSubOptionTitle = /*#__PURE__*/function (_SettingMenuItem) {
 
 videojs.registerComponent('SettingSubOptionTitle', SettingSubOptionTitle);
 
-var SettingSubOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
+var SettingSubOptionItem =
+/*#__PURE__*/
+function (_SettingMenuItem) {
   _inheritsLoose(SettingSubOptionItem, _SettingMenuItem);
 
   function SettingSubOptionItem(player, options) {
@@ -742,7 +771,9 @@ videojs.registerComponent('SettingSubOptionItem', SettingSubOptionItem);
 
 var SettingMenu$1 = videojs.getComponent('SettingMenu');
 
-var SettingMenuTemp = /*#__PURE__*/function (_SettingMenu) {
+var SettingMenuTemp =
+/*#__PURE__*/
+function (_SettingMenu) {
   _inheritsLoose(SettingMenuTemp, _SettingMenu);
 
   function SettingMenuTemp(player) {
@@ -798,7 +829,9 @@ function parseEntries(entries, selectedIndex) {
   };
 }
 
-var SettingOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
+var SettingOptionItem =
+/*#__PURE__*/
+function (_SettingMenuItem) {
   _inheritsLoose(SettingOptionItem, _SettingMenuItem);
 
   function SettingOptionItem(player, options) {
@@ -921,7 +954,9 @@ var log = function () {
   return function () {};
 }();
 
-var PlaybackRateSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
+var PlaybackRateSettingItem =
+/*#__PURE__*/
+function (_SettingOptionItem) {
   _inheritsLoose(PlaybackRateSettingItem, _SettingOptionItem);
 
   function PlaybackRateSettingItem(player, options) {
@@ -974,7 +1009,9 @@ videojs.registerComponent('PlaybackRateSettingItem', PlaybackRateSettingItem);
 
 var MenuButton = videojs.getComponent('MenuButton');
 
-var SettingMenuButton = /*#__PURE__*/function (_MenuButton) {
+var SettingMenuButton =
+/*#__PURE__*/
+function (_MenuButton) {
   _inheritsLoose(SettingMenuButton, _MenuButton);
 
   function SettingMenuButton(player, options) {

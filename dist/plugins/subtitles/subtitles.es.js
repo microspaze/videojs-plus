@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* VERSION: 1.5.9 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -27,7 +28,9 @@ function _inheritsLoose(subClass, superClass) {
 
 var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
+var SubtitleSettingMenuItem =
+/*#__PURE__*/
+function (_SettingOptionItem) {
   _inheritsLoose(SubtitleSettingMenuItem, _SettingOptionItem);
 
   function SubtitleSettingMenuItem(player, options) {
@@ -43,14 +46,18 @@ var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
     _this.addClass('vjs-setting-subtitles');
 
     player.on('subtitles', function (_, subtitles) {
-      _this.setEntries([].concat(subtitles.map(function (val, index) {
+      var close = true;
+      var entries = subtitles.map(function (val, index) {
+        close = !close || !val["default"];
         return _extends({}, val, {
           value: index
         });
-      }), [{
+      });
+
+      _this.setEntries([].concat(entries, [{
         label: 'Close Subtitles',
         value: -1,
-        "default": false
+        "default": close
       }]));
 
       _this.show();
@@ -83,7 +90,9 @@ var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
 videojs.registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
-var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
+var subtitles =
+/*#__PURE__*/
+function (_videojs$getPlugin) {
   _inheritsLoose(subtitles, _videojs$getPlugin);
 
   function subtitles(player, options) {
@@ -139,48 +148,53 @@ var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
   };
 
   _proto.load = function load(subtitles_) {
-    var _this2 = this;
-
     if (subtitles_ === void 0) {
       subtitles_ = [];
     }
 
     var player = this.player;
-    var subtitles = subtitles_.map(function (a) {
-      return Object.assign({}, a);
-    });
 
-    if (subtitles && subtitles.length) {
+    if (subtitles_ && subtitles_.length) {
       this.remove();
-      subtitles.forEach(function (subtitle) {
-        if (_this2.flag) {
-          subtitle["default"] = _this2.flag === subtitle.label || -1;
-        }
+      var index = -1;
+      var trackEls = [];
 
+      var _subtitles = subtitles_.map(function (s, i) {
+        var subtitle = Object.assign({}, s);
         var manualCleanup = true; // set default to false, otherwise subtitle will reset to the default subtitle
         // when user switch quality with quality plugin
 
         var trackEl = player.addRemoteTextTrack(_extends({}, subtitle, {
           "default": false
         }), manualCleanup);
+        trackEls.push(trackEl);
 
-        if (subtitle["default"]) {
-          _this2.flag = subtitle.label;
-          _this2.track = trackEl.track;
-          trackEl.track.mode = 'showing';
+        if (index === -1 && subtitle["default"] === true) {
+          index = i;
+        } else {
+          subtitle["default"] = false;
         }
+
+        return subtitle;
       });
-      player.trigger('subtitles', subtitles);
+
+      if (index !== -1) {
+        this.flag = _subtitles[index].label;
+        this.track = trackEls[index].track;
+        this.track.mode = 'showing';
+      }
+
+      player.trigger('subtitles', _subtitles);
     }
 
     return this;
   };
 
   _proto.remove = function remove() {
-    var _this3 = this;
+    var _this2 = this;
 
     this.values().forEach(function (track) {
-      _this3.player.removeRemoteTextTrack(track);
+      _this2.player.removeRemoteTextTrack(track);
     });
     return this;
   };
@@ -205,7 +219,10 @@ var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
 
 videojs.hook('setup', function (vjsPlayer) {
   vjsPlayer.ready(function () {
-    vjsPlayer.subtitles().load(vjsPlayer.options_.subtitles);
+    console.log('object');
+    var subtitles = vjsPlayer.options_.subtitles;
+    console.log(subtitles);
+    subtitles && subtitles.length && vjsPlayer.subtitles().load(subtitles);
   });
 });
 videojs.registerPlugin('subtitles', subtitles);
