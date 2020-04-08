@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.5.9 */
+/* VERSION: 1.6.0-beta.1 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
@@ -1029,9 +1029,6 @@
 
       _this.removeChild(_this.menu);
 
-      player.on('playerresize', function () {
-        _this.menu.reset();
-      });
       return _this;
     }
 

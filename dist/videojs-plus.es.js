@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.5.9 */
+/* VERSION: 1.6.0-beta.1 */
 import videojs from 'video.js';
 
 function findChild(parent, name, result) {
@@ -1023,9 +1023,6 @@ function (_MenuButton) {
 
     _this.removeChild(_this.menu);
 
-    player.on('playerresize', function () {
-      _this.menu.reset();
-    });
     return _this;
   }
 
