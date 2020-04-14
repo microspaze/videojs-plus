@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0-beta.1 */
+/* VERSION: 1.6.0 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -167,6 +167,7 @@ function (_videojs$getPlugin) {
         var trackEl = player.addRemoteTextTrack(_extends({}, subtitle, {
           "default": false
         }), manualCleanup);
+        trackEl.track.mode = 'hidden';
         trackEls.push(trackEl);
 
         if (index === -1 && subtitle["default"] === true) {
@@ -219,9 +220,7 @@ function (_videojs$getPlugin) {
 
 videojs.hook('setup', function (vjsPlayer) {
   vjsPlayer.ready(function () {
-    console.log('object');
     var subtitles = vjsPlayer.options_.subtitles;
-    console.log(subtitles);
     subtitles && subtitles.length && vjsPlayer.subtitles().load(subtitles);
   });
 });
