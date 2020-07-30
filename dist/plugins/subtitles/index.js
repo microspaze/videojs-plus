@@ -1,12 +1,12 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
+  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -34,9 +34,7 @@
 
   var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-  var SubtitleSettingMenuItem =
-  /*#__PURE__*/
-  function (_SettingOptionItem) {
+  var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
     _inheritsLoose(SubtitleSettingMenuItem, _SettingOptionItem);
 
     function SubtitleSettingMenuItem(player, options) {
@@ -96,9 +94,7 @@
   videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
   videojs.registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
-  var subtitles =
-  /*#__PURE__*/
-  function (_videojs$getPlugin) {
+  var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
     _inheritsLoose(subtitles, _videojs$getPlugin);
 
     function subtitles(player, options) {
@@ -211,8 +207,11 @@
       var newTrack = subtitles[index];
 
       if (newTrack) {
-        this.track.mode = 'disabled';
-        this.track = newTrack;
+        if (this.track) {
+          this.track.mode = 'disabled';
+          this.track = newTrack;
+        }
+
         newTrack.mode = 'showing';
       } else {
         this.track.mode = 'disabled';

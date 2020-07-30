@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 import videojs from 'video.js';
 
 function _inheritsLoose(subClass, superClass) {
@@ -8,9 +8,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.__proto__ = superClass;
 }
 
-var FullWindowToggle =
-/*#__PURE__*/
-function (_videojs$getComponent) {
+var FullWindowToggle = /*#__PURE__*/function (_videojs$getComponent) {
   _inheritsLoose(FullWindowToggle, _videojs$getComponent);
 
   function FullWindowToggle(player, options) {

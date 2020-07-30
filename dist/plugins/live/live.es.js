@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 import videojs from 'video.js';
 
 function _inheritsLoose(subClass, superClass) {
@@ -10,9 +10,7 @@ function _inheritsLoose(subClass, superClass) {
 
 var Component = videojs.getComponent('Component');
 
-var LiveNotice =
-/*#__PURE__*/
-function (_Component) {
+var LiveNotice = /*#__PURE__*/function (_Component) {
   _inheritsLoose(LiveNotice, _Component);
 
   function LiveNotice() {
@@ -36,9 +34,7 @@ videojs.registerComponent('LiveNotice', LiveNotice);
 
 var Plugin = videojs.getPlugin('plugin');
 
-var Live =
-/*#__PURE__*/
-function (_Plugin) {
+var Live = /*#__PURE__*/function (_Plugin) {
   _inheritsLoose(Live, _Plugin);
 
   function Live(player, options) {

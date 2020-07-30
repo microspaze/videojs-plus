@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 import videojs from 'video.js';
 
 function _inheritsLoose(subClass, superClass) {
@@ -34,9 +34,7 @@ try {
   getCurrentWindow = window.getCurrentWindow;
 }
 
-var ElectronFullscreenToggle =
-/*#__PURE__*/
-function (_videojs$getComponent) {
+var ElectronFullscreenToggle = /*#__PURE__*/function (_videojs$getComponent) {
   _inheritsLoose(ElectronFullscreenToggle, _videojs$getComponent);
 
   function ElectronFullscreenToggle(player, options) {

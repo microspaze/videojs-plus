@@ -1,12 +1,12 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
+  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -40,9 +40,7 @@
     return self;
   }
 
-  var List =
-  /*#__PURE__*/
-  function () {
+  var List = /*#__PURE__*/function () {
     function List(array, startIndex) {
       this.values = array.slice(0);
       this.index_ = startIndex || 0;
@@ -99,9 +97,7 @@
 
   var ClickableComponent = videojs.getComponent('ClickableComponent');
 
-  var PlayNextSpinner =
-  /*#__PURE__*/
-  function (_ClickableComponent) {
+  var PlayNextSpinner = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(PlayNextSpinner, _ClickableComponent);
 
     function PlayNextSpinner() {
@@ -135,9 +131,7 @@
 
   var Component = videojs.getComponent('Component');
 
-  var BeforePlayNextLayer =
-  /*#__PURE__*/
-  function (_Component) {
+  var BeforePlayNextLayer = /*#__PURE__*/function (_Component) {
     _inheritsLoose(BeforePlayNextLayer, _Component);
 
     function BeforePlayNextLayer(player, options) {
@@ -274,9 +268,7 @@
   var SettingMenuButton = videojs.getComponent('SettingMenuButton');
   var SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
-  var ToggleAutoPlayNext =
-  /*#__PURE__*/
-  function (_SettingOnOffItem) {
+  var ToggleAutoPlayNext = /*#__PURE__*/function (_SettingOnOffItem) {
     _inheritsLoose(ToggleAutoPlayNext, _SettingOnOffItem);
 
     function ToggleAutoPlayNext(player) {
@@ -333,9 +325,7 @@
 
   var Button = videojs.getComponent('Button');
 
-  var PrevNextButton =
-  /*#__PURE__*/
-  function (_Button) {
+  var PrevNextButton = /*#__PURE__*/function (_Button) {
     _inheritsLoose(PrevNextButton, _Button);
 
     function PrevNextButton(player, options) {
@@ -406,9 +396,7 @@
 
   var ClickableComponent$1 = videojs.getComponent('ClickableComponent');
 
-  var CancelPlayNextEl =
-  /*#__PURE__*/
-  function (_ClickableComponent) {
+  var CancelPlayNextEl = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(CancelPlayNextEl, _ClickableComponent);
 
     function CancelPlayNextEl(player, options) {
@@ -435,9 +423,7 @@
   CancelPlayNextEl.prototype.controlText_ = 'Cancel PlayNext';
   videojs.registerComponent('CancelPlayNextEl', CancelPlayNextEl);
 
-  var PlayList =
-  /*#__PURE__*/
-  function (_List) {
+  var PlayList = /*#__PURE__*/function (_List) {
     _inheritsLoose(PlayList, _List);
 
     function PlayList(player, array, startIndex) {

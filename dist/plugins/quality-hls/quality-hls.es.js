@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -46,9 +46,7 @@ var log = function () {
 
 var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-var QualityHlsSettingItem =
-/*#__PURE__*/
-function (_SettingOptionItem) {
+var QualityHlsSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
   _inheritsLoose(QualityHlsSettingItem, _SettingOptionItem);
 
   function QualityHlsSettingItem(player, options) {

@@ -1,12 +1,12 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
+  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -32,9 +32,7 @@
     subClass.__proto__ = superClass;
   }
 
-  var List =
-  /*#__PURE__*/
-  function () {
+  var List = /*#__PURE__*/function () {
     function List(array, startIndex) {
       this.values = array.slice(0);
       this.index_ = startIndex || 0;
@@ -91,9 +89,7 @@
 
   var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-  var QualitySettingItem =
-  /*#__PURE__*/
-  function (_SettingOptionItem) {
+  var QualitySettingItem = /*#__PURE__*/function (_SettingOptionItem) {
     _inheritsLoose(QualitySettingItem, _SettingOptionItem);
 
     function QualitySettingItem(player, options) {
@@ -141,9 +137,7 @@
   videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualitySettingItem');
   videojs.registerComponent('QualitySettingItem', QualitySettingItem);
 
-  var Quality =
-  /*#__PURE__*/
-  function (_List) {
+  var Quality = /*#__PURE__*/function (_List) {
     _inheritsLoose(Quality, _List);
 
     function Quality(player, array, defaultQualityLevel) {

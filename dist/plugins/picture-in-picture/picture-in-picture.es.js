@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -28,9 +28,7 @@ function _inheritsLoose(subClass, superClass) {
 
 var ClickableComponent = videojs.getComponent('ClickableComponent');
 
-var ExitPipButton =
-/*#__PURE__*/
-function (_ClickableComponent) {
+var ExitPipButton = /*#__PURE__*/function (_ClickableComponent) {
   _inheritsLoose(ExitPipButton, _ClickableComponent);
 
   function ExitPipButton(player, options) {
@@ -60,9 +58,7 @@ videojs.registerComponent('ExitPipButton', ExitPipButton);
 
 var Component = videojs.getComponent('Component');
 
-var PipPlayerWrapper =
-/*#__PURE__*/
-function (_Component) {
+var PipPlayerWrapper = /*#__PURE__*/function (_Component) {
   _inheritsLoose(PipPlayerWrapper, _Component);
 
   function PipPlayerWrapper(player, options) {
@@ -101,9 +97,7 @@ videojs.registerComponent('PipPlayerWrapper', PipPlayerWrapper);
 
 var Button = videojs.getComponent('Button');
 
-var PipButton =
-/*#__PURE__*/
-function (_Button) {
+var PipButton = /*#__PURE__*/function (_Button) {
   _inheritsLoose(PipButton, _Button);
 
   function PipButton(player, options) {
@@ -144,9 +138,7 @@ videojs.hook('setup', function (vjsPlayer) {
   parent.addChild(new PipButton(vjsPlayer), {}, index);
 });
 
-var pictureInPicture =
-/*#__PURE__*/
-function (_videojs$getPlugin) {
+var pictureInPicture = /*#__PURE__*/function (_videojs$getPlugin) {
   _inheritsLoose(pictureInPicture, _videojs$getPlugin);
 
   function pictureInPicture(player, options) {

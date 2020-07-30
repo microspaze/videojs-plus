@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.0 */
+/* VERSION: 1.6.1 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -28,9 +28,7 @@ function _inheritsLoose(subClass, superClass) {
 
 var SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-var SubtitleSettingMenuItem =
-/*#__PURE__*/
-function (_SettingOptionItem) {
+var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
   _inheritsLoose(SubtitleSettingMenuItem, _SettingOptionItem);
 
   function SubtitleSettingMenuItem(player, options) {
@@ -90,9 +88,7 @@ function (_SettingOptionItem) {
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
 videojs.registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
-var subtitles =
-/*#__PURE__*/
-function (_videojs$getPlugin) {
+var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
   _inheritsLoose(subtitles, _videojs$getPlugin);
 
   function subtitles(player, options) {
@@ -205,8 +201,11 @@ function (_videojs$getPlugin) {
     var newTrack = subtitles[index];
 
     if (newTrack) {
-      this.track.mode = 'disabled';
-      this.track = newTrack;
+      if (this.track) {
+        this.track.mode = 'disabled';
+        this.track = newTrack;
+      }
+
       newTrack.mode = 'showing';
     } else {
       this.track.mode = 'disabled';
