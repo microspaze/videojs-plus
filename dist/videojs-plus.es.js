@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.1 */
+/* VERSION: 1.6.2 */
 import videojs from 'video.js';
 
 function findChild(parent, name, result) {

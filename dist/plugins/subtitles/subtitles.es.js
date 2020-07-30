@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.1 */
+/* VERSION: 1.6.2 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -203,11 +203,11 @@ var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
     if (newTrack) {
       if (this.track) {
         this.track.mode = 'disabled';
-        this.track = newTrack;
       }
 
-      newTrack.mode = 'showing';
-    } else {
+      this.track = newTrack;
+      this.track.mode = 'showing';
+    } else if (this.track) {
       this.track.mode = 'disabled';
     }
 

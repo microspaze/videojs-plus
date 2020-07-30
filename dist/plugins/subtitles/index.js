@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.1 */
+/* VERSION: 1.6.2 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
@@ -209,11 +209,11 @@
       if (newTrack) {
         if (this.track) {
           this.track.mode = 'disabled';
-          this.track = newTrack;
         }
 
-        newTrack.mode = 'showing';
-      } else {
+        this.track = newTrack;
+        this.track.mode = 'showing';
+      } else if (this.track) {
         this.track.mode = 'disabled';
       }
 
