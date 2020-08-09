@@ -527,13 +527,12 @@ var SettingMenu = /*#__PURE__*/function (_Menu) {
 
     _this.addClass('vjs-setting-menu');
 
-    setTimeout(_this._ready.bind(_assertThisInitialized(_this)), 0);
     return _this;
   }
 
   var _proto = SettingMenu.prototype;
 
-  _proto._ready = function _ready() {
+  _proto.init = function init() {
     if (!this.contentEl_) {
       return;
     }
@@ -541,7 +540,7 @@ var SettingMenu = /*#__PURE__*/function (_Menu) {
     var _this$contentEl_ = this.contentEl_,
         width = _this$contentEl_.offsetWidth,
         height = _this$contentEl_.offsetHeight;
-    this.mainMenuItem = this.children().slice(0);
+    this.mainMenuItems = this.children().slice(0);
     this.resize({
       width: width,
       height: height
@@ -611,7 +610,7 @@ var SettingMenu = /*#__PURE__*/function (_Menu) {
   };
 
   _proto.restore = function restore() {
-    this.transform(this.mainMenuItem);
+    this.transform(this.mainMenuItems);
   };
 
   _proto.removeStyle = function removeStyle() {
@@ -733,7 +732,8 @@ var SettingSubOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
     var _this;
 
     _this = _SettingMenuItem.call(this, player, options) || this;
-    _this.selectable = true;
+    _this.selectable = true; // FIXME: should be remove
+
     Object.assign(_assertThisInitialized(_this), options);
 
     _this.addChild('Component', {}, 0);
@@ -754,13 +754,10 @@ var SettingSubOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
   };
 
   _proto.handleClick = function handleClick() {
-    var _this2 = this;
-
-    this.parent.onChange(this.options_);
-    this.parent.updateSelectedValue();
-    setTimeout(function () {
-      _this2.menu.restore();
-    }, 50);
+    this.parent.onChange({
+      index: this.options_.index
+    });
+    this.menu.restore();
   };
 
   return SettingSubOptionItem;
@@ -847,7 +844,10 @@ var SettingOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
     Object.assign(this, parseEntries(entries_, selectedIndex));
     this.updateSelectedValue();
     var SubOptionItem = videojs.getComponent(this.name_ + "Child") || SettingSubOptionItem;
-    this.subMenuItems = this.entries.map(function (_ref, index) {
+    this.subMenuItems = [new SettingSubOptionTitle(this.player_, {
+      label: this.options_.label,
+      menu: this.menu
+    })].concat(this.entries.map(function (_ref, index) {
       var label = _ref.label,
           value = _ref.value;
       return new SubOptionItem(_this2.player_, {
@@ -857,10 +857,6 @@ var SettingOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
         parent: _this2,
         menu: _this2.menu
       });
-    });
-    this.subMenuItems.splice(0, 0, new SettingSubOptionTitle(this.player_, {
-      label: this.options_.label,
-      menu: this.menu
     }));
   };
 
@@ -870,10 +866,10 @@ var SettingOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
 
   _proto.select = function select(index) {
     this.selected = this.entries[index];
+    this.updateSelectedValue();
   };
 
   _proto.update = function update() {
-    this.updateSelectedValue();
     this.subMenuItems.forEach(function (item) {
       item.update && item.update();
     });
@@ -955,9 +951,16 @@ var PlaybackRateSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
 
   var _proto = PlaybackRateSettingItem.prototype;
 
-  _proto.onChange = function onChange(_ref2) {
-    var value = _ref2.value;
-    this.player_.playbackRate(value);
+  _proto.onChange = function onChange() {
+    var _SettingOptionItem$pr;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    (_SettingOptionItem$pr = _SettingOptionItem.prototype.onChange).call.apply(_SettingOptionItem$pr, [this].concat(args));
+
+    this.player_.playbackRate(this.selected.value);
   };
 
   return PlaybackRateSettingItem;
@@ -1008,6 +1011,12 @@ var SettingMenuButton = /*#__PURE__*/function (_MenuButton) {
   _proto.hideMenu = function hideMenu() {
     this.unpressButton();
     this.el_.blur();
+  };
+
+  _proto.pressButton = function pressButton() {
+    _MenuButton.prototype.pressButton.call(this);
+
+    this.menu.init();
   };
 
   _proto.unpressButton = function unpressButton() {

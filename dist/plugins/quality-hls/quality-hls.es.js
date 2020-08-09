@@ -130,13 +130,17 @@ var QualityHlsSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
     }
   };
 
-  _proto.onChange = function onChange(selected) {
-    var _this4 = this;
+  _proto.onChange = function onChange() {
+    var _SettingOptionItem$pr,
+        _this4 = this;
 
-    var value = selected.value;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _SettingOptionItem.prototype.onChange.call(this, selected);
+    (_SettingOptionItem$pr = _SettingOptionItem.prototype.onChange).call.apply(_SettingOptionItem$pr, [this].concat(args));
 
+    var value = this.selected.value;
     this.levels.forEach(function (lv) {
       lv.enabled = lv.height === value || value === 'auto';
     });

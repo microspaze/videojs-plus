@@ -77,9 +77,16 @@ var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
 
   var _proto = SubtitleSettingMenuItem.prototype;
 
-  _proto.onChange = function onChange(_ref2) {
-    var value = _ref2.value;
-    this.player_.subtitles().pick(value);
+  _proto.onChange = function onChange() {
+    var _SettingOptionItem$pr;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    (_SettingOptionItem$pr = _SettingOptionItem.prototype.onChange).call.apply(_SettingOptionItem$pr, [this].concat(args));
+
+    this.player_.subtitles().pick(this.selected.value);
   };
 
   return SubtitleSettingMenuItem;
