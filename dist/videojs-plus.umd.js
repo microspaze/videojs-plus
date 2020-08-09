@@ -533,26 +533,21 @@
 
       _this.addClass('vjs-setting-menu');
 
-      setTimeout(_this.reset.bind(_assertThisInitialized(_this)), 0);
+      setTimeout(_this._ready.bind(_assertThisInitialized(_this)), 0);
       return _this;
     }
 
     var _proto = SettingMenu.prototype;
 
-    _proto.reset = function reset() {
+    _proto._ready = function _ready() {
       if (!this.contentEl_) {
         return;
       }
 
-      this.removeStyle();
       var _this$contentEl_ = this.contentEl_,
           width = _this$contentEl_.offsetWidth,
           height = _this$contentEl_.offsetHeight;
-      this.origin = {
-        children: this.children().slice(0),
-        width: width,
-        height: height
-      };
+      this.mainMenuItem = this.children().slice(0);
       this.resize({
         width: width,
         height: height
@@ -601,9 +596,28 @@
       this.contentEl_.style.height = height + 'px';
     };
 
+    _proto.getMenuDimension = function getMenuDimension(items) {
+      var player = this.player_;
+      var tempMenu = new SettingMenuTemp(player);
+      tempMenu.update(items);
+      player.addChild(tempMenu);
+      var rect = tempMenu.contentEl_.getBoundingClientRect(); // remove subMenuItem form tempMenu first, otherwise they will also be disposed
+
+      tempMenu.update();
+      tempMenu.dispose(); // remove tempMenu in `player.children`
+
+      player.removeChild(tempMenu);
+      return rect;
+    };
+
+    _proto.transform = function transform(items) {
+      var dimensions = this.getMenuDimension(items);
+      this.update(items);
+      this.resize(dimensions);
+    };
+
     _proto.restore = function restore() {
-      this.resize(this.origin);
-      this.update(this.origin.children);
+      this.transform(this.mainMenuItem);
     };
 
     _proto.removeStyle = function removeStyle() {
@@ -616,6 +630,18 @@
 
     return SettingMenu;
   }(Menu$1);
+
+  var SettingMenuTemp = /*#__PURE__*/function (_SettingMenu) {
+    _inheritsLoose(SettingMenuTemp, _SettingMenu);
+
+    function SettingMenuTemp(player) {
+      return _SettingMenu.call(this, player, {
+        name: 'SettingMenuTemp'
+      }) || this;
+    }
+
+    return SettingMenuTemp;
+  }(SettingMenu);
 
   videojs.registerComponent('SettingMenu', SettingMenu);
 
@@ -734,45 +760,19 @@
     };
 
     _proto.handleClick = function handleClick() {
-      this.parent.onChange(this.options_);
-      this.restore();
-    };
+      var _this2 = this;
 
-    _proto.restore = function restore() {
-      this.menu.restore();
+      this.parent.onChange(this.options_);
+      this.parent.updateSelectedValue();
+      setTimeout(function () {
+        _this2.menu.restore();
+      }, 50);
     };
 
     return SettingSubOptionItem;
   }(SettingMenuItem);
 
   videojs.registerComponent('SettingSubOptionItem', SettingSubOptionItem);
-
-  var SettingMenu$1 = videojs.getComponent('SettingMenu');
-
-  var SettingMenuTemp = /*#__PURE__*/function (_SettingMenu) {
-    _inheritsLoose(SettingMenuTemp, _SettingMenu);
-
-    function SettingMenuTemp(player) {
-      return _SettingMenu.call(this, player, {
-        name: 'SettingMenuTemp'
-      }) || this;
-    }
-
-    return SettingMenuTemp;
-  }(SettingMenu$1);
-
-  var getMenuDimension = function getMenuDimension(player, items) {
-    var tempMenu = new SettingMenuTemp(player);
-    tempMenu.update(items);
-    player.addChild(tempMenu);
-    var rect = tempMenu.contentEl_.getBoundingClientRect(); // remove subMenuItem form tempMenu first, otherwise they will also be disposed
-
-    tempMenu.update();
-    tempMenu.dispose(); // remove tempMenu in `player.children`
-
-    player.removeChild(tempMenu);
-    return rect;
-  };
 
   /**
    * @param {Array<Object|number|string>} entries
@@ -871,9 +871,7 @@
     };
 
     _proto.handleClick = function handleClick() {
-      var dimensions = getMenuDimension(this.player_, this.subMenuItems);
-      this.menu.update(this.subMenuItems);
-      this.menu.resize(dimensions);
+      this.menu.transform(this.subMenuItems);
     };
 
     _proto.select = function select(index) {
@@ -897,12 +895,6 @@
       if (this.selected) {
         this.selectedValueEl.innerHTML = this.localize(this.selected.label);
       }
-    };
-
-    _proto.show = function show() {
-      _SettingMenuItem.prototype.show.call(this);
-
-      this.menu.reset();
     };
 
     return SettingOptionItem;
