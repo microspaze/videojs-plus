@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.2 */
+/* VERSION: 1.6.4 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
@@ -44,8 +44,7 @@
 
   var _videojs$browser = videojs.browser,
       IS_IPHONE = _videojs$browser.IS_IPHONE,
-      IOS_VERSION = _videojs$browser.IOS_VERSION,
-      TOUCH_ENABLED = _videojs$browser.TOUCH_ENABLED;
+      IOS_VERSION = _videojs$browser.IOS_VERSION;
   videojs.hook('setup', function (vjsPlayer) {
     vjsPlayer.playsinline(vjsPlayer.options_.playsinline !== false);
     vjsPlayer.addClass('video-js');
@@ -57,8 +56,6 @@
         vjsPlayer.addClass('vjs-iphone-below-11');
       }
     }
-
-    TOUCH_ENABLED && vjsPlayer.removeClass('vjs-workinghover');
   });
 
   function _extends() {

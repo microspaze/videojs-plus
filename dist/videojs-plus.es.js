@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.2 */
+/* VERSION: 1.6.4 */
 import videojs from 'video.js';
 
 function findChild(parent, name, result) {
@@ -38,8 +38,7 @@ videojs.getComponent('Component').prototype.findChild = function (name) {
 
 var _videojs$browser = videojs.browser,
     IS_IPHONE = _videojs$browser.IS_IPHONE,
-    IOS_VERSION = _videojs$browser.IOS_VERSION,
-    TOUCH_ENABLED = _videojs$browser.TOUCH_ENABLED;
+    IOS_VERSION = _videojs$browser.IOS_VERSION;
 videojs.hook('setup', function (vjsPlayer) {
   vjsPlayer.playsinline(vjsPlayer.options_.playsinline !== false);
   vjsPlayer.addClass('video-js');
@@ -51,8 +50,6 @@ videojs.hook('setup', function (vjsPlayer) {
       vjsPlayer.addClass('vjs-iphone-below-11');
     }
   }
-
-  TOUCH_ENABLED && vjsPlayer.removeClass('vjs-workinghover');
 });
 
 function _extends() {
