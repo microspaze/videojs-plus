@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.5 */
+/* VERSION: 1.6.6 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
@@ -540,14 +540,8 @@
         return;
       }
 
-      var _this$contentEl_ = this.contentEl_,
-          width = _this$contentEl_.offsetWidth,
-          height = _this$contentEl_.offsetHeight;
       this.mainMenuItems = this.children().slice(0);
-      this.resize({
-        width: width,
-        height: height
-      });
+      this.transform(this.mainMenuItems);
       /**
        *  Since the width of setting menu depends on screen width.
        *  If player is initialized on small screen size then resize to a bigger screen,

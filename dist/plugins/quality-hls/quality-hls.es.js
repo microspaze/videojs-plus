@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.5 */
+/* VERSION: 1.6.6 */
 import videojs from 'video.js';
 
 function _extends() {
