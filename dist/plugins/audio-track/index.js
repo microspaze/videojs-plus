@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -40,7 +42,7 @@
     return self;
   }
 
-  var SettingOptionItem = videojs.getComponent('SettingOptionItem');
+  var SettingOptionItem = videojs__default['default'].getComponent('SettingOptionItem');
 
   var AudioTrackSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
     _inheritsLoose(AudioTrackSettingItem, _SettingOptionItem);
@@ -146,8 +148,8 @@
     return AudioTrackSettingItem;
   }(SettingOptionItem);
 
-  videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
-  videojs.registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
+  videojs__default['default'].getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
+  videojs__default['default'].registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
 
   var audio = /*#__PURE__*/function (_videojs$getPlugin) {
     _inheritsLoose(audio, _videojs$getPlugin);
@@ -197,9 +199,9 @@
     };
 
     return audio;
-  }(videojs.getPlugin('plugin'));
+  }(videojs__default['default'].getPlugin('plugin'));
 
-  videojs.registerPlugin('audio', audio);
+  videojs__default['default'].registerPlugin('audio', audio);
 
 })));
 //# sourceMappingURL=index.js.map

@@ -1,19 +1,21 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   var unloaded = false;
 
   function middleware(player) {
     return {
       callPlay: function callPlay() {
-        return unloaded && videojs.middleware.TERMINATOR;
+        return unloaded && videojs__default['default'].middleware.TERMINATOR;
       }
     };
   }
@@ -39,8 +41,8 @@
     }
   }
 
-  videojs.use('*', middleware);
-  videojs.registerPlugin('unload', unload);
+  videojs__default['default'].use('*', middleware);
+  videojs__default['default'].registerPlugin('unload', unload);
 
 })));
 //# sourceMappingURL=index.js.map

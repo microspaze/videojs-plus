@@ -1,3 +1,118 @@
+.video-js:-moz-full-screen {
+  position: absolute; }
+
+.video-js:-webkit-full-screen {
+  width: 100% !important;
+  height: 100% !important; }
+
+.video-js[tabindex='-1'] {
+  outline: none; }
+
+.video-js ul {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  list-style-position: outside;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  outline: 0; }
+
+.video-js.vjs-fluid,
+.video-js.vjs-16-9,
+.video-js.vjs-4-3 {
+  width: 100%;
+  max-width: 100%;
+  height: 0; }
+
+.video-js.vjs-16-9 {
+  padding-top: 56.25%; }
+
+.video-js.vjs-4-3 {
+  padding-top: 75%; }
+
+.video-js.vjs-fill {
+  width: 100%;
+  height: 100%; }
+
+.video-js .vjs-tech {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+body.vjs-full-window {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-y: auto; }
+
+.vjs-full-window .video-js.vjs-fullscreen {
+  position: fixed;
+  overflow: hidden;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0; }
+
+.video-js.vjs-fullscreen {
+  width: 100% !important;
+  height: 100% !important;
+  padding-top: 0 !important;
+  background-color: #000; }
+
+.video-js.vjs-fullscreen.vjs-user-inactive {
+  cursor: none; }
+
+.vjs-hidden {
+  display: none !important; }
+
+.vjs-disabled {
+  opacity: 0.5;
+  cursor: default; }
+
+.video-js .vjs-offscreen {
+  height: 1px;
+  left: -9999px;
+  position: absolute;
+  top: 0;
+  width: 1px; }
+
+.video-js .vjs-control-text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.vjs-controls-disabled .vjs-big-play-button,
+.vjs-has-started .vjs-big-play-button,
+.vjs-using-native-controls .vjs-big-play-button,
+.vjs-error .vjs-big-play-button {
+  display: none; }
+
+.vjs-has-started.vjs-paused.vjs-show-big-play-button-on-pause .vjs-big-play-button {
+  display: block; }
+
+.vjs-resize-manager {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  visibility: hidden;
+  z-index: -1; }
+
+.vjs-spacer {
+  flex-grow: 1; }
+
 .vjs-menu .vjs-menu-content {
   padding: 0.3em 0;
   margin: 0;
@@ -419,6 +534,21 @@
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
+.vjs-poster {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-color: #000;
+  outline: none; }
+
+.vjs-has-started:not(.vjs-ended) .vjs-poster {
+  visibility: hidden; }
+
 .vjs-modal-dialog {
   position: absolute;
   top: 0;
@@ -442,136 +572,6 @@
   margin-bottom: 0.2em;
   display: block; }
 
-.vjs-poster {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: contain;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-color: #000;
-  outline: none; }
-
-.vjs-has-started:not(.vjs-ended) .vjs-poster {
-  visibility: hidden; }
-
-.video-js:-moz-full-screen {
-  position: absolute; }
-
-.video-js:-webkit-full-screen {
-  width: 100% !important;
-  height: 100% !important; }
-
-.video-js[tabindex='-1'] {
-  outline: none; }
-
-.video-js ul {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  list-style-position: outside;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
-  outline: 0; }
-
-.video-js.vjs-fluid,
-.video-js.vjs-16-9,
-.video-js.vjs-4-3 {
-  width: 100%;
-  max-width: 100%;
-  height: 0; }
-
-.video-js.vjs-16-9 {
-  padding-top: 56.25%; }
-
-.video-js.vjs-4-3 {
-  padding-top: 75%; }
-
-.video-js.vjs-fill {
-  width: 100%;
-  height: 100%; }
-
-.video-js .vjs-tech {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-body.vjs-full-window {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  overflow-y: auto; }
-
-.vjs-full-window .video-js.vjs-fullscreen {
-  position: fixed;
-  overflow: hidden;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0; }
-
-.video-js.vjs-fullscreen {
-  width: 100% !important;
-  height: 100% !important;
-  padding-top: 0 !important;
-  background-color: #000; }
-
-.video-js.vjs-fullscreen.vjs-user-inactive {
-  cursor: none; }
-
-.vjs-hidden {
-  display: none !important; }
-
-.vjs-disabled {
-  opacity: 0.5;
-  cursor: default; }
-
-.video-js .vjs-offscreen {
-  height: 1px;
-  left: -9999px;
-  position: absolute;
-  top: 0;
-  width: 1px; }
-
-.video-js .vjs-control-text {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px; }
-
-.vjs-controls-disabled .vjs-big-play-button,
-.vjs-has-started .vjs-big-play-button,
-.vjs-using-native-controls .vjs-big-play-button,
-.vjs-error .vjs-big-play-button {
-  display: none; }
-
-.vjs-has-started.vjs-paused.vjs-show-big-play-button-on-pause .vjs-big-play-button {
-  display: block; }
-
-.vjs-resize-manager {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  visibility: hidden;
-  z-index: -1; }
-
-.vjs-spacer {
-  flex-grow: 1; }
-
 .vjs-title {
   color: #fff;
   position: relative;
@@ -593,258 +593,32 @@ body.vjs-full-window {
   visibility: hidden;
   opacity: 0; }
 
-.vjs-setting-button .vjs-icon-placeholder {
-  display: block;
-  transform: rotate(0deg);
-  transition: 0.2s transform; }
-
-.vjs-setting-button[aria-expanded='true'] .vjs-icon-placeholder {
-  transform: rotate(30deg); }
-
-.vjs-setting-menu {
-  visibility: hidden;
-  will-change: visibility;
-  border-radius: 3px; }
-  .vjs-setting-menu.vjs-lock-showing {
-    visibility: visible; }
-  @media (max-width: 480px) {
-    .vjs-setting-menu {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: none;
-      text-shadow: none;
-      box-shadow: none;
-      transition: visibility 0s linear 0.3s; }
-      .vjs-setting-menu .vjs-menu-content {
-        position: absolute;
-        bottom: 0;
-        width: 100% !important;
-        color: #333;
-        background-color: #fff;
-        transform: translateY(100%);
-        transition: 0.3s transform ease, 0.3s height ease; }
-      .vjs-setting-menu .vjs-menu-item {
-        width: 100% !important; }
-      .vjs-setting-menu.vjs-lock-showing {
-        transition: visibility 0s linear 0s; }
-        .vjs-setting-menu.vjs-lock-showing .vjs-close-menu-layer {
-          opacity: 1; }
-        .vjs-setting-menu.vjs-lock-showing .vjs-menu-content {
-          transform: translateY(0); } }
-  .vjs-setting-menu::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; }
-  .vjs-setting-menu .vjs-menu-content {
-    will-change: transform, width, height;
-    transition: 0.3s transform ease, 0.3s width ease, 0.3s height ease;
-    overflow: hidden; }
-  .vjs-setting-menu .vjs-menu-item {
-    display: flex;
-    align-items: center; }
-
-.vjs-menu.vjs-settings-sub-menu {
-  bottom: 0;
-  right: 0;
-  overflow: hidden; }
-  .vjs-menu.vjs-settings-sub-menu.vjs-hidden {
-    visibility: hidden;
-    display: block !important; }
-
-.vjs-setting-menu-item:after {
-  content: '';
-  width: 0.65em;
-  height: 0.65em;
-  display: inline-block;
-  border-right: 0.15em solid;
-  border-bottom: 0.15em solid;
-  transform: rotate(-45deg); }
-
-.vjs-settings-sub-menu-item {
-  width: 100%; }
-  .vjs-settings-sub-menu-item > div {
-    width: 1em;
-    margin-right: 0.5em; }
-    .vjs-settings-sub-menu-item > div:before {
-      content: '';
-      display: block;
-      margin: auto; }
-
-.vjs-menu-item.vjs-settings-sub-menu-title {
-  background-color: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 0.6em 1em; }
-  .vjs-menu-item.vjs-settings-sub-menu-title:after {
-    content: 'Hi, i am padding';
-    visibility: hidden;
-    display: block;
-    height: 6px;
-    width: 0; }
-  .vjs-menu-item.vjs-settings-sub-menu-title > div:before {
-    width: 0.65em;
-    height: 0.65em;
-    border-left: 0.15em solid;
-    border-bottom: 0.15em solid;
-    transform: rotate(45deg); }
-
-.vjs-settings-sub-menu-option.vjs-selected > div:before {
-  margin: auto;
-  content: '';
-  width: 0.425em;
-  height: 0.85em;
-  display: block;
-  margin-top: -0.2em;
-  border-right: 0.15em solid;
-  border-bottom: 0.15em solid;
-  transform: rotate(45deg); }
-
-.vjs-setting-onoff-item .vjs-onoff-button {
-  width: 2.16em;
-  height: 0.96em;
-  float: right;
-  background-color: #ddd;
-  border-radius: 50px;
-  position: relative; }
-  .vjs-setting-onoff-item .vjs-onoff-button:before {
-    content: '';
-    border-radius: 50%;
-    height: 0;
-    width: 1.2em;
-    height: 1.2em;
-    display: block;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.5);
-    background: #fff;
-    position: absolute;
-    top: -0.12em;
-    transform: translateX(0px);
-    transition: 0.3s transform ease; }
-
-.vjs-setting-onoff-item .vjs-cell {
-  display: table-cell;
-  vertical-align: middle; }
-
-.vjs-setting-onoff-item .vjs-menu-item-text {
-  float: left; }
-
-.vjs-setting-onoff-item.vjs-active .vjs-onoff-button:before {
-  transform: translateX(0.96em); }
-
-.vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-onoff-item, .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-menu-item {
-  min-width: 225px; }
-
-@media (min-width: 481px) {
-  .vjs-menu.vjs-setting-menu {
-    right: 10px;
-    bottom: calc(2.5em + 15px);
-    z-index: 1;
-    max-height: calc(90% - 2.5em);
-    overflow-y: auto; }
-    .vjs-menu.vjs-setting-menu .vjs-menu-item .vjs-icon-placeholder {
-      display: none; }
-  .vjs-settings-sub-menu-item {
-    padding-right: 1.5em !important; }
-  .vjs-menu-item.vjs-settings-sub-menu-title {
-    margin-bottom: 0.3em; }
-  .vjs-setting-menu-value {
-    text-align: right;
-    padding-right: 0.8em;
-    font-size: 0.85em;
-    opacity: 0.9;
-    color: #eee; } }
-
-@media (max-width: 480px) {
-  .vjs-setting-menu-ready.vjs-setting-menu {
-    max-height: none;
-    right: 0;
-    bottom: 0;
-    z-index: 1000; }
-    .vjs-setting-menu-ready.vjs-setting-menu .vjs-menu-item .vjs-icon-placeholder {
-      width: 1em;
-      margin-right: 0.5em; }
-  .vjs-setting-menu-ready .vjs-close-setting-menu {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    transition: opacity 0.3s; }
-  .vjs-setting-menu-ready .vjs-setting-menu-value {
-    padding-right: 0.8em; } }
-
-.vjs-context-menu {
-  z-index: 1000;
-  border-radius: 3px; }
-  .vjs-context-menu .vjs-close-context-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    outline: none; }
-  .vjs-context-menu .vjs-menu-content {
-    position: relative; }
-
-.vjs-context-menu-item {
-  display: flex;
-  align-items: center; }
-  .vjs-context-menu-item span {
+.video-js {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 16px;
+  /* 
+  *   hide ios big play button 
+  *   https://stackoverflow.com/questions/8911247/hide-iphone-html5-video-play-button 
+  */ }
+  .video-js *,
+  .video-js *:before,
+  .video-js *:after {
+    box-sizing: border-box; }
+  .video-js > video {
     display: block; }
-  .vjs-context-menu-item .vjs-menu-item-text {
-    margin-left: 0.5em; }
-  .vjs-context-menu-item:after {
-    margin-right: 0;
-    margin-left: auto; }
-
-@media (min-width: 481px) {
-  .vjs-context-menu {
-    position: absolute;
-    top: 0;
-    left: 0; }
-    .vjs-context-menu .vjs-menu-content {
-      width: calc-menu-width(225/16); } }
-
-@media (max-width: 480px) {
-  .vjs-context-menu {
-    top: 0 !important;
-    left: 0 !important;
-    visibility: hidden;
-    will-change: visibility; }
-    .vjs-context-menu:not(.vjs-hidden) {
-      visibility: visible; } }
-  @media (max-width: 480px) and (max-width: 480px) {
-    .vjs-context-menu {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: none;
-      text-shadow: none;
-      box-shadow: none;
-      transition: visibility 0s linear 0.3s; }
-      .vjs-context-menu .vjs-menu-content {
-        position: absolute;
-        bottom: 0;
-        width: 100% !important;
-        color: #333;
-        background-color: #fff;
-        transform: translateY(100%);
-        transition: 0.3s transform ease, 0.3s height ease; }
-      .vjs-context-menu .vjs-menu-item {
-        width: 100% !important; }
-      .vjs-context-menu:not(.vjs-hidden) {
-        transition: visibility 0s linear 0s; }
-        .vjs-context-menu:not(.vjs-hidden) .vjs-close-menu-layer {
-          opacity: 1; }
-        .vjs-context-menu:not(.vjs-hidden) .vjs-menu-content {
-          transform: translateY(0); } }
-
-@media (max-width: 480px) {
-    .vjs-context-menu.vjs-hidden {
-      display: block !important;
-      visibility: hidden; }
-  .vjs-close-context-menu {
-    background-color: rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    transition: opacity 0.3s; } }
+  .video-js *::-webkit-media-controls-panel,
+  .video-js *::-webkit-media-controls-play-button,
+  .video-js *::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none; }
 
 .vjs-control-bar {
   display: flex;
@@ -1030,6 +804,259 @@ body.vjs-full-window {
       height: 0.1875em;
       background-color: rgba(255, 255, 255, 0.6); }
 
+.vjs-context-menu {
+  z-index: 1000;
+  border-radius: 3px; }
+  .vjs-context-menu .vjs-close-context-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none; }
+  .vjs-context-menu .vjs-menu-content {
+    position: relative; }
+
+.vjs-context-menu-item {
+  display: flex;
+  align-items: center; }
+  .vjs-context-menu-item span {
+    display: block; }
+  .vjs-context-menu-item .vjs-menu-item-text {
+    margin-left: 0.5em; }
+  .vjs-context-menu-item:after {
+    margin-right: 0;
+    margin-left: auto; }
+
+@media (min-width: 481px) {
+  .vjs-context-menu {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .vjs-context-menu .vjs-menu-content {
+      width: calc-menu-width(225/16); } }
+
+@media (max-width: 480px) {
+  .vjs-context-menu {
+    top: 0 !important;
+    left: 0 !important;
+    visibility: hidden;
+    will-change: visibility; }
+    .vjs-context-menu:not(.vjs-hidden) {
+      visibility: visible; } }
+  @media (max-width: 480px) and (max-width: 480px) {
+    .vjs-context-menu {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: none;
+      text-shadow: none;
+      box-shadow: none;
+      transition: visibility 0s linear 0.3s; }
+      .vjs-context-menu .vjs-menu-content {
+        position: absolute;
+        bottom: 0;
+        width: 100% !important;
+        color: #333;
+        background-color: #fff;
+        transform: translateY(100%);
+        transition: 0.3s transform ease, 0.3s height ease; }
+      .vjs-context-menu .vjs-menu-item {
+        width: 100% !important; }
+      .vjs-context-menu:not(.vjs-hidden) {
+        transition: visibility 0s linear 0s; }
+        .vjs-context-menu:not(.vjs-hidden) .vjs-close-menu-layer {
+          opacity: 1; }
+        .vjs-context-menu:not(.vjs-hidden) .vjs-menu-content {
+          transform: translateY(0); } }
+
+@media (max-width: 480px) {
+    .vjs-context-menu.vjs-hidden {
+      display: block !important;
+      visibility: hidden; }
+  .vjs-close-context-menu {
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s; } }
+
+.vjs-setting-button .vjs-icon-placeholder {
+  display: block;
+  transform: rotate(0deg);
+  transition: 0.2s transform; }
+
+.vjs-setting-button[aria-expanded='true'] .vjs-icon-placeholder {
+  transform: rotate(30deg); }
+
+.vjs-setting-menu {
+  visibility: hidden;
+  will-change: visibility;
+  border-radius: 3px; }
+  .vjs-setting-menu.vjs-lock-showing {
+    visibility: visible; }
+  @media (max-width: 480px) {
+    .vjs-setting-menu {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: none;
+      text-shadow: none;
+      box-shadow: none;
+      transition: visibility 0s linear 0.3s; }
+      .vjs-setting-menu .vjs-menu-content {
+        position: absolute;
+        bottom: 0;
+        width: 100% !important;
+        color: #333;
+        background-color: #fff;
+        transform: translateY(100%);
+        transition: 0.3s transform ease, 0.3s height ease; }
+      .vjs-setting-menu .vjs-menu-item {
+        width: 100% !important; }
+      .vjs-setting-menu.vjs-lock-showing {
+        transition: visibility 0s linear 0s; }
+        .vjs-setting-menu.vjs-lock-showing .vjs-close-menu-layer {
+          opacity: 1; }
+        .vjs-setting-menu.vjs-lock-showing .vjs-menu-content {
+          transform: translateY(0); } }
+  .vjs-setting-menu::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; }
+  .vjs-setting-menu .vjs-menu-content {
+    will-change: transform, width, height;
+    transition: 0.3s transform ease, 0.3s width ease, 0.3s height ease;
+    overflow: hidden; }
+  .vjs-setting-menu .vjs-menu-item {
+    display: flex;
+    align-items: center; }
+
+.vjs-menu.vjs-settings-sub-menu {
+  bottom: 0;
+  right: 0;
+  overflow: hidden; }
+  .vjs-menu.vjs-settings-sub-menu.vjs-hidden {
+    visibility: hidden;
+    display: block !important; }
+
+.vjs-setting-menu-item:after {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  display: inline-block;
+  border-right: 0.15em solid;
+  border-bottom: 0.15em solid;
+  transform: rotate(-45deg); }
+
+.vjs-settings-sub-menu-item {
+  width: 100%; }
+  .vjs-settings-sub-menu-item > div {
+    width: 1em;
+    margin-right: 0.5em; }
+    .vjs-settings-sub-menu-item > div:before {
+      content: '';
+      display: block;
+      margin: auto; }
+
+.vjs-menu-item.vjs-settings-sub-menu-title {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.6em 1em; }
+  .vjs-menu-item.vjs-settings-sub-menu-title:after {
+    content: 'Hi, i am padding';
+    visibility: hidden;
+    display: block;
+    height: 6px;
+    width: 0; }
+  .vjs-menu-item.vjs-settings-sub-menu-title > div:before {
+    width: 0.65em;
+    height: 0.65em;
+    border-left: 0.15em solid;
+    border-bottom: 0.15em solid;
+    transform: rotate(45deg); }
+
+.vjs-settings-sub-menu-option.vjs-selected > div:before {
+  margin: auto;
+  content: '';
+  width: 0.425em;
+  height: 0.85em;
+  display: block;
+  margin-top: -0.2em;
+  border-right: 0.15em solid;
+  border-bottom: 0.15em solid;
+  transform: rotate(45deg); }
+
+.vjs-setting-onoff-item .vjs-onoff-button {
+  width: 2.16em;
+  height: 0.96em;
+  float: right;
+  background-color: #ddd;
+  border-radius: 50px;
+  position: relative; }
+  .vjs-setting-onoff-item .vjs-onoff-button:before {
+    content: '';
+    border-radius: 50%;
+    height: 0;
+    width: 1.2em;
+    height: 1.2em;
+    display: block;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.5);
+    background: #fff;
+    position: absolute;
+    top: -0.12em;
+    transform: translateX(0px);
+    transition: 0.3s transform ease; }
+
+.vjs-setting-onoff-item .vjs-cell {
+  display: table-cell;
+  vertical-align: middle; }
+
+.vjs-setting-onoff-item .vjs-menu-item-text {
+  float: left; }
+
+.vjs-setting-onoff-item.vjs-active .vjs-onoff-button:before {
+  transform: translateX(0.96em); }
+
+.vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-onoff-item, .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-menu-item {
+  min-width: 225px; }
+
+@media (min-width: 481px) {
+  .vjs-menu.vjs-setting-menu {
+    right: 10px;
+    bottom: calc(2.5em + 15px);
+    z-index: 1;
+    max-height: calc(90% - 2.5em);
+    overflow-y: auto; }
+    .vjs-menu.vjs-setting-menu .vjs-menu-item .vjs-icon-placeholder {
+      display: none; }
+  .vjs-settings-sub-menu-item {
+    padding-right: 1.5em !important; }
+  .vjs-menu-item.vjs-settings-sub-menu-title {
+    margin-bottom: 0.3em; }
+  .vjs-setting-menu-value {
+    text-align: right;
+    padding-right: 0.8em;
+    font-size: 0.85em;
+    opacity: 0.9;
+    color: #eee; } }
+
+@media (max-width: 480px) {
+  .vjs-setting-menu-ready.vjs-setting-menu {
+    max-height: none;
+    right: 0;
+    bottom: 0;
+    z-index: 1000; }
+    .vjs-setting-menu-ready.vjs-setting-menu .vjs-menu-item .vjs-icon-placeholder {
+      width: 1em;
+      margin-right: 0.5em; }
+  .vjs-setting-menu-ready .vjs-close-setting-menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s; }
+  .vjs-setting-menu-ready .vjs-setting-menu-value {
+    padding-right: 0.8em; } }
+
 .vjs-play-toggle-layer {
   position: absolute;
   top: 0;
@@ -1038,33 +1065,6 @@ body.vjs-full-window {
   height: 100%;
   outline: none;
   cursor: pointer; }
-
-.video-js {
-  position: relative;
-  width: 100%;
-  height: auto;
-  background-color: #000;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-size: 16px;
-  /* 
-  *   hide ios big play button 
-  *   https://stackoverflow.com/questions/8911247/hide-iphone-html5-video-play-button 
-  */ }
-  .video-js *,
-  .video-js *:before,
-  .video-js *:after {
-    box-sizing: border-box; }
-  .video-js > video {
-    display: block; }
-  .video-js *::-webkit-media-controls-panel,
-  .video-js *::-webkit-media-controls-play-button,
-  .video-js *::-webkit-media-controls-start-playback-button {
-    display: none !important;
-    -webkit-appearance: none; }
 
 .vjs-mobile-view.video-js:not(.vjs-has-started) .vjs-control-bar {
   display: none; }

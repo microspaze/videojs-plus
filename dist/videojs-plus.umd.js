@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function findChild(parent, name, result) {
     var children = [];
@@ -36,16 +38,16 @@
     };
   }
 
-  videojs.getComponent('Component').prototype.findChild = function (name) {
+  videojs__default['default'].getComponent('Component').prototype.findChild = function (name) {
     var result = [];
     findChild(this, name, result);
     return result;
   };
 
-  var _videojs$browser = videojs.browser,
+  var _videojs$browser = videojs__default['default'].browser,
       IS_IPHONE = _videojs$browser.IS_IPHONE,
       IOS_VERSION = _videojs$browser.IOS_VERSION;
-  videojs.hook('setup', function (vjsPlayer) {
+  videojs__default['default'].hook('setup', function (vjsPlayer) {
     vjsPlayer.playsinline(vjsPlayer.options_.playsinline !== false);
     vjsPlayer.addClass('video-js');
 
@@ -90,8 +92,8 @@
     return self;
   }
 
-  var Component = videojs.getComponent('Component');
-  var ControlBar = videojs.getComponent('ControlBar');
+  var Component = videojs__default['default'].getComponent('Component');
+  var ControlBar = videojs__default['default'].getComponent('ControlBar');
 
   var ControlSeparator = /*#__PURE__*/function (_Component) {
     _inheritsLoose(ControlSeparator, _Component);
@@ -111,8 +113,8 @@
     return ControlSeparator;
   }(Component);
 
-  videojs.registerComponent('ControlSeparator', ControlSeparator);
-  videojs.hook('beforesetup', function (_, options) {
+  videojs__default['default'].registerComponent('ControlSeparator', ControlSeparator);
+  videojs__default['default'].hook('beforesetup', function (_, options) {
     var children = ControlBar.prototype.options_.children.slice(0);
     var index = children.indexOf('CustomControlSpacer');
 
@@ -135,7 +137,7 @@
     return options;
   }); // prevent control bar immediately shown
 
-  videojs.hook('setup', function (vjsPlayer) {
+  videojs__default['default'].hook('setup', function (vjsPlayer) {
     var enableMobileView = vjsPlayer.options_.mobileView !== false;
 
     var matchDimension = function matchDimension(value) {
@@ -164,7 +166,7 @@
     }
   });
 
-  var SeekBar = videojs.getComponent('SeekBar');
+  var SeekBar = videojs__default['default'].getComponent('SeekBar');
 
   SeekBar.prototype.getPercent = function getPercent() {
     var time = this.player_.currentTime();
@@ -175,7 +177,7 @@
   SeekBar.prototype.handleMouseMove = function handleMouseMove(event) {
     var player = this.player_; // if (!videojs.dom.isSingleLeftClick(event) || isAdPlaying(player)) {
 
-    if (!videojs.dom.isSingleLeftClick(event)) {
+    if (!videojs__default['default'].dom.isSingleLeftClick(event)) {
       return;
     }
 
@@ -189,8 +191,8 @@
     this.update();
   };
 
-  videojs.getComponent('ControlBar').prototype.options_.children = ['PlayToggle', 'CustomControlSpacer', 'VolumePanel', 'CurrentTimeDisplay', 'TimeDivider', 'DurationDisplay', 'ProgressControl', 'CustomControlSpacer', 'SettingMenuButton', 'FullscreenToggle'];
-  videojs.hook('setup', function (vjsPlayer) {
+  videojs__default['default'].getComponent('ControlBar').prototype.options_.children = ['PlayToggle', 'CustomControlSpacer', 'VolumePanel', 'CurrentTimeDisplay', 'TimeDivider', 'DurationDisplay', 'ProgressControl', 'CustomControlSpacer', 'SettingMenuButton', 'FullscreenToggle'];
+  videojs__default['default'].hook('setup', function (vjsPlayer) {
     vjsPlayer.on('mouseleave', function () {
       vjsPlayer.userActive(false);
     });
@@ -220,7 +222,7 @@
         className: 'vjs-title'
       });
 
-      this.contentEl_ = videojs.dom.createEl('div', {
+      this.contentEl_ = videojs__default['default'].dom.createEl('div', {
         className: 'vjs-title-field'
       });
       el.appendChild(this.contentEl_);
@@ -240,7 +242,7 @@
     };
 
     return Title;
-  }(videojs.getComponent('Component'));
+  }(videojs__default['default'].getComponent('Component'));
 
   var title = function title(title_) {
     var videoTitle = this.player_.getChild('VideoTitle');
@@ -252,12 +254,12 @@
     videoTitle.update(title_);
   };
 
-  videojs.registerPlugin('title', title);
-  videojs.registerComponent('VideoTitle', Title);
-  videojs.getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTitle');
+  videojs__default['default'].registerPlugin('title', title);
+  videojs__default['default'].registerComponent('VideoTitle', Title);
+  videojs__default['default'].getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTitle');
 
-  var PlayToggleButton = videojs.getComponent('PlayToggle');
-  var ClickableComponent = videojs.getComponent('ClickableComponent');
+  var PlayToggleButton = videojs__default['default'].getComponent('PlayToggle');
+  var ClickableComponent = videojs__default['default'].getComponent('ClickableComponent');
 
   var PlayToggleLayer = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(PlayToggleLayer, _ClickableComponent);
@@ -269,7 +271,7 @@
     var _proto = PlayToggleLayer.prototype;
 
     _proto.createEl = function createEl() {
-      return videojs.dom.createEl('div', {
+      return videojs__default['default'].dom.createEl('div', {
         className: 'vjs-play-toggle-layer'
       });
     };
@@ -283,12 +285,12 @@
     return PlayToggleLayer;
   }(ClickableComponent);
 
-  videojs.registerComponent('PlayToggleLayer', PlayToggleLayer);
-  var playerChildren = videojs.getComponent('Player').prototype.options_.children;
+  videojs__default['default'].registerComponent('PlayToggleLayer', PlayToggleLayer);
+  var playerChildren = videojs__default['default'].getComponent('Player').prototype.options_.children;
   var loadSpinnerIndex = playerChildren.indexOf('loadingSpinner');
   playerChildren.splice(loadSpinnerIndex, 0, 'PlayToggleLayer');
 
-  var MenuItem = videojs.getComponent('MenuItem');
+  var MenuItem = videojs__default['default'].getComponent('MenuItem');
 
   var ContextMenuItem = /*#__PURE__*/function (_MenuItem) {
     _inheritsLoose(ContextMenuItem, _MenuItem);
@@ -330,7 +332,7 @@
     return ContextMenuItem;
   }(MenuItem);
 
-  videojs.registerComponent('ContextMenuItem', ContextMenuItem);
+  videojs__default['default'].registerComponent('ContextMenuItem', ContextMenuItem);
 
   var ContextMenuToggleLoop = /*#__PURE__*/function (_ContextMenuItem) {
     _inheritsLoose(ContextMenuToggleLoop, _ContextMenuItem);
@@ -366,7 +368,7 @@
     return ContextMenuToggleLoop;
   }(ContextMenuItem);
 
-  videojs.registerComponent('ContextMenuToggleLoop', ContextMenuToggleLoop);
+  videojs__default['default'].registerComponent('ContextMenuToggleLoop', ContextMenuToggleLoop);
 
   var AboutThisPlayer = /*#__PURE__*/function (_ContextMenuItem) {
     _inheritsLoose(AboutThisPlayer, _ContextMenuItem);
@@ -390,9 +392,9 @@
     return AboutThisPlayer;
   }(ContextMenuItem);
 
-  videojs.registerComponent('AboutThisPlayer', AboutThisPlayer);
+  videojs__default['default'].registerComponent('AboutThisPlayer', AboutThisPlayer);
 
-  var ClickableComponent$1 = videojs.getComponent('ClickableComponent'); // for mobile view
+  var ClickableComponent$1 = videojs__default['default'].getComponent('ClickableComponent'); // for mobile view
 
   var CloseContextMenu = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(CloseContextMenu, _ClickableComponent);
@@ -414,9 +416,9 @@
     return CloseContextMenu;
   }(ClickableComponent$1);
 
-  videojs.registerComponent('CloseContextMenu', CloseContextMenu);
+  videojs__default['default'].registerComponent('CloseContextMenu', CloseContextMenu);
 
-  var Menu = videojs.getComponent('Menu');
+  var Menu = videojs__default['default'].getComponent('Menu');
 
   var ContextMenu = /*#__PURE__*/function (_Menu) {
     _inheritsLoose(ContextMenu, _Menu);
@@ -489,10 +491,10 @@
   ContextMenu.prototype.options_ = {
     children: ['ContextMenuToggleLoop', 'AboutThisPlayer']
   };
-  videojs.registerComponent('ContextMenu', ContextMenu);
-  videojs.getComponent('Player').prototype.options_.children.push('ContextMenu');
+  videojs__default['default'].registerComponent('ContextMenu', ContextMenu);
+  videojs__default['default'].getComponent('Player').prototype.options_.children.push('ContextMenu');
 
-  var ClickableComponent$2 = videojs.getComponent('ClickableComponent');
+  var ClickableComponent$2 = videojs__default['default'].getComponent('ClickableComponent');
 
   var CloseSettingMenu = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(CloseSettingMenu, _ClickableComponent);
@@ -514,9 +516,9 @@
     return CloseSettingMenu;
   }(ClickableComponent$2);
 
-  videojs.registerComponent('CloseSettingMenu', CloseSettingMenu);
+  videojs__default['default'].registerComponent('CloseSettingMenu', CloseSettingMenu);
 
-  var Menu$1 = videojs.getComponent('Menu');
+  var Menu$1 = videojs__default['default'].getComponent('Menu');
 
   var SettingMenu = /*#__PURE__*/function (_Menu) {
     _inheritsLoose(SettingMenu, _Menu);
@@ -633,9 +635,9 @@
     return SettingMenuTemp;
   }(SettingMenu);
 
-  videojs.registerComponent('SettingMenu', SettingMenu);
+  videojs__default['default'].registerComponent('SettingMenu', SettingMenu);
 
-  var MenuItem$1 = videojs.getComponent('MenuItem');
+  var MenuItem$1 = videojs__default['default'].getComponent('MenuItem');
 
   var SettingMenuItem = /*#__PURE__*/function (_MenuItem) {
     _inheritsLoose(SettingMenuItem, _MenuItem);
@@ -643,7 +645,7 @@
     function SettingMenuItem(player, options) {
       var _this;
 
-      _this = _MenuItem.call(this, player, videojs.mergeOptions({
+      _this = _MenuItem.call(this, player, videojs__default['default'].mergeOptions({
         selectable: false
       }, options)) || this;
       _this.menu = options.menu;
@@ -653,7 +655,7 @@
     return SettingMenuItem;
   }(MenuItem$1);
 
-  videojs.registerComponent('SettingMenuItem', SettingMenuItem);
+  videojs__default['default'].registerComponent('SettingMenuItem', SettingMenuItem);
 
   var SettingOnOffItem = /*#__PURE__*/function (_SettingMenuItem) {
     _inheritsLoose(SettingOnOffItem, _SettingMenuItem);
@@ -666,7 +668,7 @@
 
     _proto.createEl = function createEl() {
       var options = this.options_;
-      var el = videojs.dom.createEl('li', {
+      var el = videojs__default['default'].dom.createEl('li', {
         className: 'vjs-menu-item vjs-setting-onoff-item',
         innerHTML: "\n        <div class=\"vjs-icon-placeholder " + (this.options_.icon || '') + "\"></div>\n        <div>" + this.localize(options.label) + "</div>\n        <div class=\"vjs-spacer\"></div>\n        <div>\n          <div class=\"vjs-onoff-button\"></div>\n        </div>\n      "
       });
@@ -692,7 +694,7 @@
     return SettingOnOffItem;
   }(SettingMenuItem);
 
-  videojs.registerComponent('SettingOnOffItem', SettingOnOffItem);
+  videojs__default['default'].registerComponent('SettingOnOffItem', SettingOnOffItem);
 
   var SettingSubOptionTitle = /*#__PURE__*/function (_SettingMenuItem) {
     _inheritsLoose(SettingSubOptionTitle, _SettingMenuItem);
@@ -720,7 +722,7 @@
     return SettingSubOptionTitle;
   }(SettingMenuItem);
 
-  videojs.registerComponent('SettingSubOptionTitle', SettingSubOptionTitle);
+  videojs__default['default'].registerComponent('SettingSubOptionTitle', SettingSubOptionTitle);
 
   var SettingSubOptionItem = /*#__PURE__*/function (_SettingMenuItem) {
     _inheritsLoose(SettingSubOptionItem, _SettingMenuItem);
@@ -760,7 +762,7 @@
     return SettingSubOptionItem;
   }(SettingMenuItem);
 
-  videojs.registerComponent('SettingSubOptionItem', SettingSubOptionItem);
+  videojs__default['default'].registerComponent('SettingSubOptionItem', SettingSubOptionItem);
 
   /**
    * @param {Array<Object|number|string>} entries
@@ -820,11 +822,11 @@
       var _this$options_ = this.options_,
           icon = _this$options_.icon,
           label = _this$options_.label;
-      var el = videojs.dom.createEl('li', {
+      var el = videojs__default['default'].dom.createEl('li', {
         className: 'vjs-menu-item vjs-setting-menu-item',
         innerHTML: "\n        <div class=\"vjs-icon-placeholder " + (icon || '') + "\"></div>\n        <div class=\"vjs-setting-menu-label\">" + this.localize(label) + "</div>\n        <div class=\"vjs-spacer\"></div>\n      "
       });
-      this.selectedValueEl = videojs.dom.createEl('div', {
+      this.selectedValueEl = videojs__default['default'].dom.createEl('div', {
         className: 'vjs-setting-menu-value'
       });
       el.appendChild(this.selectedValueEl);
@@ -840,7 +842,7 @@
 
       Object.assign(this, parseEntries(entries_, selectedIndex));
       this.updateSelectedValue();
-      var SubOptionItem = videojs.getComponent(this.name_ + "Child") || SettingSubOptionItem;
+      var SubOptionItem = videojs__default['default'].getComponent(this.name_ + "Child") || SettingSubOptionItem;
       this.subMenuItems = [new SettingSubOptionTitle(this.player_, {
         label: this.options_.label,
         menu: this.menu
@@ -887,7 +889,7 @@
     return SettingOptionItem;
   }(SettingMenuItem);
 
-  videojs.registerComponent('SettingOptionItem', SettingOptionItem);
+  videojs__default['default'].registerComponent('SettingOptionItem', SettingOptionItem);
 
   var logType = '';
 
@@ -896,7 +898,7 @@
   } catch (e) {}
 
   var log = function () {
-    if (logType === 'normal' || videojs.browser.IE_VERSION) {
+    if (logType === 'normal' || videojs__default['default'].browser.IE_VERSION) {
       // log without style
       return console.info.bind(console, '[VJS Plus]:');
     } else if (logType) {
@@ -963,9 +965,9 @@
     return PlaybackRateSettingItem;
   }(SettingOptionItem);
 
-  videojs.registerComponent('PlaybackRateSettingItem', PlaybackRateSettingItem);
+  videojs__default['default'].registerComponent('PlaybackRateSettingItem', PlaybackRateSettingItem);
 
-  var MenuButton = videojs.getComponent('MenuButton');
+  var MenuButton = videojs__default['default'].getComponent('MenuButton');
 
   var SettingMenuButton = /*#__PURE__*/function (_MenuButton) {
     _inheritsLoose(SettingMenuButton, _MenuButton);
@@ -975,7 +977,8 @@
 
       _this = _MenuButton.call(this, player, options) || this; // move menu to player
 
-      player.addChild(_this.menu); // remove videojs parent child relationship between button and menu
+      player.addChild(_this.menu);
+      player.SettingMenu = _this.menu; // remove videojs parent child relationship between button and menu
 
       _this.removeChild(_this.menu);
 
@@ -997,10 +1000,11 @@
         menuButton: this
       });
       var entries = this.options_.entries || [];
-      entries.forEach(function (component) {
-        menu.addChild(component, {
+      entries.forEach(function (componentName) {
+        var component = menu.addChild(componentName, {
           menu: menu
         });
+        menu[componentName] = component;
       });
       return menu;
     };
@@ -1049,7 +1053,7 @@
   SettingMenuButton.prototype.options_ = {
     entries: ['PlaybackRateSettingItem']
   };
-  videojs.registerComponent('SettingMenuButton', SettingMenuButton);
+  videojs__default['default'].registerComponent('SettingMenuButton', SettingMenuButton);
 
 })));
 //# sourceMappingURL=videojs-plus.umd.js.map

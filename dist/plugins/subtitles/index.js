@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -32,7 +34,7 @@
     subClass.__proto__ = superClass;
   }
 
-  var SettingOptionItem = videojs.getComponent('SettingOptionItem');
+  var SettingOptionItem = videojs__default['default'].getComponent('SettingOptionItem');
 
   var SubtitleSettingMenuItem = /*#__PURE__*/function (_SettingOptionItem) {
     _inheritsLoose(SubtitleSettingMenuItem, _SettingOptionItem);
@@ -98,8 +100,8 @@
     return SubtitleSettingMenuItem;
   }(SettingOptionItem);
 
-  videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
-  videojs.registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
+  videojs__default['default'].getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
+  videojs__default['default'].registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
   var subtitles = /*#__PURE__*/function (_videojs$getPlugin) {
     _inheritsLoose(subtitles, _videojs$getPlugin);
@@ -228,15 +230,15 @@
     };
 
     return subtitles;
-  }(videojs.getPlugin('plugin'));
+  }(videojs__default['default'].getPlugin('plugin'));
 
-  videojs.hook('setup', function (vjsPlayer) {
+  videojs__default['default'].hook('setup', function (vjsPlayer) {
     vjsPlayer.ready(function () {
       var subtitles = vjsPlayer.options_.subtitles;
       subtitles && subtitles.length && vjsPlayer.subtitles().load(subtitles);
     });
   });
-  videojs.registerPlugin('subtitles', subtitles);
+  videojs__default['default'].registerPlugin('subtitles', subtitles);
 
 })));
 //# sourceMappingURL=index.js.map

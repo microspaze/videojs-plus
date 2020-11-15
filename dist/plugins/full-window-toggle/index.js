@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
@@ -54,10 +56,10 @@
     };
 
     return FullWindowToggle;
-  }(videojs.getComponent('FullscreenToggle'));
+  }(videojs__default['default'].getComponent('FullscreenToggle'));
 
-  videojs.registerComponent('FullWindowToggle', FullWindowToggle);
-  var controlBarChildren = videojs.getComponent('ControlBar').prototype.options_.children;
+  videojs__default['default'].registerComponent('FullWindowToggle', FullWindowToggle);
+  var controlBarChildren = videojs__default['default'].getComponent('ControlBar').prototype.options_.children;
   var fullScreenButtonIndex = controlBarChildren.indexOf('FullscreenToggle');
   controlBarChildren[fullScreenButtonIndex] = 'FullWindowToggle';
 

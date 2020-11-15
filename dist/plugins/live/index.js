@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
@@ -14,7 +16,7 @@
     subClass.__proto__ = superClass;
   }
 
-  var Component = videojs.getComponent('Component');
+  var Component = videojs__default['default'].getComponent('Component');
 
   var LiveNotice = /*#__PURE__*/function (_Component) {
     _inheritsLoose(LiveNotice, _Component);
@@ -26,7 +28,7 @@
     var _proto = LiveNotice.prototype;
 
     _proto.createEl = function createEl() {
-      var el = videojs.dom.createEl('div', {
+      var el = videojs__default['default'].dom.createEl('div', {
         className: 'vjs-live-notice',
         innerHTML: "\n        <div class=\"vjs-live-notice-spot vjs-icon-circle\"></div>\n        Live\n      "
       });
@@ -36,9 +38,9 @@
     return LiveNotice;
   }(Component);
 
-  videojs.registerComponent('LiveNotice', LiveNotice);
+  videojs__default['default'].registerComponent('LiveNotice', LiveNotice);
 
-  var Plugin = videojs.getPlugin('plugin');
+  var Plugin = videojs__default['default'].getPlugin('plugin');
 
   var Live = /*#__PURE__*/function (_Plugin) {
     _inheritsLoose(Live, _Plugin);
@@ -97,7 +99,7 @@
     return Live;
   }(Plugin);
 
-  videojs.registerPlugin('live', Live);
+  videojs__default['default'].registerPlugin('live', Live);
 
 })));
 //# sourceMappingURL=index.js.map

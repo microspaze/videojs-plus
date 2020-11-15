@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -32,7 +34,7 @@
     subClass.__proto__ = superClass;
   }
 
-  var ClickableComponent = videojs.getComponent('ClickableComponent');
+  var ClickableComponent = videojs__default['default'].getComponent('ClickableComponent');
 
   var ExitPipButton = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(ExitPipButton, _ClickableComponent);
@@ -60,9 +62,9 @@
   }(ClickableComponent);
 
   ExitPipButton.prototype.controlText_ = 'Exit Pictutre In Pictutre';
-  videojs.registerComponent('ExitPipButton', ExitPipButton);
+  videojs__default['default'].registerComponent('ExitPipButton', ExitPipButton);
 
-  var Component = videojs.getComponent('Component');
+  var Component = videojs__default['default'].getComponent('Component');
 
   var PipPlayerWrapper = /*#__PURE__*/function (_Component) {
     _inheritsLoose(PipPlayerWrapper, _Component);
@@ -99,9 +101,9 @@
     return PipPlayerWrapper;
   }(Component);
 
-  videojs.registerComponent('PipPlayerWrapper', PipPlayerWrapper);
+  videojs__default['default'].registerComponent('PipPlayerWrapper', PipPlayerWrapper);
 
-  var Button = videojs.getComponent('Button');
+  var Button = videojs__default['default'].getComponent('Button');
 
   var PipButton = /*#__PURE__*/function (_Button) {
     _inheritsLoose(PipButton, _Button);
@@ -136,8 +138,8 @@
   }(Button);
 
   PipButton.prototype.controlText_ = 'Picture in Picture';
-  videojs.registerComponent('PipButton', PipButton);
-  videojs.hook('setup', function (vjsPlayer) {
+  videojs__default['default'].registerComponent('PipButton', PipButton);
+  videojs__default['default'].hook('setup', function (vjsPlayer) {
     var _vjsPlayer$findChild$ = vjsPlayer.findChild('SettingMenuButton')[0],
         parent = _vjsPlayer$findChild$.parent,
         index = _vjsPlayer$findChild$.index;
@@ -183,23 +185,23 @@
       var parentPlayer = this.parentPlayer,
           options_ = this.options_;
       var id = parentPlayer.id_ + '-pip-player';
-      var videoEl = videojs.dom.createEl('video', {
+      var videoEl = videojs__default['default'].dom.createEl('video', {
         id: id,
         className: 'vjs-pip-player'
       });
       document.body.appendChild(videoEl);
 
-      var pipPlayerOptions = _extends({}, parentPlayer.options_, {}, parentPlayer.cache_, {
+      var pipPlayerOptions = _extends({}, parentPlayer.options_, parentPlayer.cache_, {
         autoplay: true,
         muted: parentPlayer.muted()
       });
 
-      var pipPlayer = this.pipPlayer = videojs(videoEl, pipPlayerOptions);
+      var pipPlayer = this.pipPlayer = videojs__default['default'](videoEl, pipPlayerOptions);
       this.wrapper = new PipPlayerWrapper(pipPlayer, _extends({}, options_, {
         parentPlayer: parentPlayer
       }));
       this.dragzone = pipPlayer.getChild('PlayToggleLayer');
-      this.updatePosition(_extends({}, this.cache_, {}, options_));
+      this.updatePosition(_extends({}, this.cache_, options_));
       pipPlayer.ready(function () {
         pipPlayer.currentTime(parentPlayer.currentTime());
         pipPlayer.play();
@@ -318,9 +320,9 @@
     };
 
     return pictureInPicture;
-  }(videojs.getPlugin('plugin'));
+  }(videojs__default['default'].getPlugin('plugin'));
 
-  videojs.registerPlugin('pictureInPicture', pictureInPicture);
+  videojs__default['default'].registerPlugin('pictureInPicture', pictureInPicture);
 
 })));
 //# sourceMappingURL=index.js.map

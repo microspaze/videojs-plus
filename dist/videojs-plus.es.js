@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 import videojs from 'video.js';
 
 function findChild(parent, name, result) {
@@ -969,7 +969,8 @@ var SettingMenuButton = /*#__PURE__*/function (_MenuButton) {
 
     _this = _MenuButton.call(this, player, options) || this; // move menu to player
 
-    player.addChild(_this.menu); // remove videojs parent child relationship between button and menu
+    player.addChild(_this.menu);
+    player.SettingMenu = _this.menu; // remove videojs parent child relationship between button and menu
 
     _this.removeChild(_this.menu);
 
@@ -991,10 +992,11 @@ var SettingMenuButton = /*#__PURE__*/function (_MenuButton) {
       menuButton: this
     });
     var entries = this.options_.entries || [];
-    entries.forEach(function (component) {
-      menu.addChild(component, {
+    entries.forEach(function (componentName) {
+      var component = menu.addChild(componentName, {
         menu: menu
       });
+      menu[componentName] = component;
     });
     return menu;
   };

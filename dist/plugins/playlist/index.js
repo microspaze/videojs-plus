@@ -1,12 +1,14 @@
 /* eslint-disable */
-/* VERSION: 1.6.6 */
+/* VERSION: 1.6.7 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
-  (global = global || self, factory(global.videojs));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.videojs));
 }(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var videojs__default = /*#__PURE__*/_interopDefaultLegacy(videojs);
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -95,7 +97,7 @@
     return List;
   }();
 
-  var ClickableComponent = videojs.getComponent('ClickableComponent');
+  var ClickableComponent = videojs__default['default'].getComponent('ClickableComponent');
 
   var PlayNextSpinner = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(PlayNextSpinner, _ClickableComponent);
@@ -127,9 +129,9 @@
   }(ClickableComponent);
 
   PlayNextSpinner.prototype.controlText_ = 'PlayNext';
-  videojs.registerComponent('PlayNextSpinner', PlayNextSpinner);
+  videojs__default['default'].registerComponent('PlayNextSpinner', PlayNextSpinner);
 
-  var Component = videojs.getComponent('Component');
+  var Component = videojs__default['default'].getComponent('Component');
 
   var BeforePlayNextLayer = /*#__PURE__*/function (_Component) {
     _inheritsLoose(BeforePlayNextLayer, _Component);
@@ -180,10 +182,10 @@
 
     _proto.createEl = function createEl() {
       var title = this.getNext().title;
-      var el = videojs.dom.createEl('div', {
+      var el = videojs__default['default'].dom.createEl('div', {
         className: 'vjs-before-playnext'
       });
-      this.contentEl_ = videojs.dom.createEl('div', {
+      this.contentEl_ = videojs__default['default'].dom.createEl('div', {
         className: 'vjs-before-playnext-content',
         innerHTML: "\n        <div class=\"vjs-upnext-text\">" + this.localize('Up Next') + "</div>\n        <div class=\"vjs-playnext-title\">\n            <div>" + title + "</div>\n        </div>\n      "
       });
@@ -262,11 +264,11 @@
     }
   }
 
-  videojs.registerPlugin('playNext', playNext);
-  videojs.registerComponent('BeforePlayNextLayer', BeforePlayNextLayer);
+  videojs__default['default'].registerPlugin('playNext', playNext);
+  videojs__default['default'].registerComponent('BeforePlayNextLayer', BeforePlayNextLayer);
 
-  var SettingMenuButton = videojs.getComponent('SettingMenuButton');
-  var SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
+  var SettingMenuButton = videojs__default['default'].getComponent('SettingMenuButton');
+  var SettingOnOffItem = videojs__default['default'].getComponent('SettingOnOffItem');
 
   var ToggleAutoPlayNext = /*#__PURE__*/function (_SettingOnOffItem) {
     _inheritsLoose(ToggleAutoPlayNext, _SettingOnOffItem);
@@ -320,10 +322,10 @@
     return ToggleAutoPlayNext;
   }(SettingOnOffItem);
 
-  videojs.registerComponent('ToggleAutoPlayNext', ToggleAutoPlayNext);
+  videojs__default['default'].registerComponent('ToggleAutoPlayNext', ToggleAutoPlayNext);
   SettingMenuButton.prototype.options_.entries.splice(0, 0, 'ToggleAutoPlayNext');
 
-  var Button = videojs.getComponent('Button');
+  var Button = videojs__default['default'].getComponent('Button');
 
   var PrevNextButton = /*#__PURE__*/function (_Button) {
     _inheritsLoose(PrevNextButton, _Button);
@@ -373,7 +375,7 @@
     return PrevNextButton;
   }(Button);
 
-  var ControlBar = videojs.getComponent('ControlBar');
+  var ControlBar = videojs__default['default'].getComponent('ControlBar');
   var children = ControlBar.prototype.options_.children;
   var indexOfPlayToggle = children.indexOf('PlayToggle');
 
@@ -392,9 +394,9 @@
     });
   }
 
-  videojs.registerComponent('PrevNextButton', PrevNextButton);
+  videojs__default['default'].registerComponent('PrevNextButton', PrevNextButton);
 
-  var ClickableComponent$1 = videojs.getComponent('ClickableComponent');
+  var ClickableComponent$1 = videojs__default['default'].getComponent('ClickableComponent');
 
   var CancelPlayNextEl = /*#__PURE__*/function (_ClickableComponent) {
     _inheritsLoose(CancelPlayNextEl, _ClickableComponent);
@@ -421,7 +423,7 @@
   }(ClickableComponent$1);
 
   CancelPlayNextEl.prototype.controlText_ = 'Cancel PlayNext';
-  videojs.registerComponent('CancelPlayNextEl', CancelPlayNextEl);
+  videojs__default['default'].registerComponent('CancelPlayNextEl', CancelPlayNextEl);
 
   var PlayList = /*#__PURE__*/function (_List) {
     _inheritsLoose(PlayList, _List);
@@ -506,12 +508,12 @@
     return PlayList;
   }(List);
 
-  videojs.registerPlugin('setPlayList', function (playlist, startIndex) {
+  videojs__default['default'].registerPlugin('setPlayList', function (playlist, startIndex) {
     var player = this.player_;
     player.playlist = new PlayList(player, playlist, startIndex);
     player.trigger('playlist', playlist);
   });
-  videojs.hook('setup', function (vjsPlayer) {
+  videojs__default['default'].hook('setup', function (vjsPlayer) {
     var playlist = vjsPlayer.options_.playlist;
 
     if (playlist && playlist.length) {
